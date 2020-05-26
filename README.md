@@ -1,6 +1,6 @@
 # Backend
 API Documentation
-BASE URL: https://medcabinet1.herokuapp.com
+BASE URL: https://med-cabinet1.herokuapp.com
 
 Attach endpoints to the end of the base URL in order to make HTTP Requests.
 Table of Contents
@@ -13,7 +13,7 @@ User registration and login
 
 **[POST] Registration for User**
 
-URL: https://medcabinet1.herokuapp.com/api/users/register
+URL: https://med-cabinet1.herokuapp.com/api/users/register
 
 **Request body should include:**
 |Input|Input Type|
@@ -37,7 +37,7 @@ You will recieve the user id and username.
 ```
 **[POST] Login for User**
 
-URL: https://medcabinet1.herokuapp.com/api/users/login
+URL: https://med-cabinet1.herokuapp.com/api/users/login
 
 **Request body should include:**
 |Input|Input Type|
