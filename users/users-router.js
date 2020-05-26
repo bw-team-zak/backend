@@ -30,14 +30,16 @@ router.post('/login', isValid(), async (req, res, next) => {
     } 
 
     const tokenPayload = {
-        userId: user.id,
+        id: user.id,
+        username: user.username
     }
     
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET)
     res.json({
+        id:user.id,
+        username: user.username,
         message: `Welcome ${user.username}!`,
         token: token,
-        tokenPayload
     })
   } catch(err) {
       next(err)
