@@ -46,4 +46,13 @@ router.post('/login', isValid(), async (req, res, next) => {
     }
 });
 
+router.get('/',async (req, res, next) => {
+  try {
+    const users = await Users.find()
+    res.json(users)
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router;
