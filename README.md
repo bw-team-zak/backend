@@ -20,19 +20,27 @@ URL: https://med-cabinet1.herokuapp.com/api/users/register
 |---|---|
 |username (required)|string|
 |password (required)|string|
+|med_condition|string|
+|age|integer|
+experienced|boolean|
 
 An example of how the body should appear:
 ```
 {
     "username": "dopey",
-    "password": "1234"
+    "password": "1234",
+    "med_condition": "glaucoma",
+    "age": 32,
+    "experienced: true
 }
 ```
 You will recieve the user id and username.
 ```
 {
-    "id": 3,
-    "username": "dopey"
+    "username": "dopey",
+    "med_condition": "glaucoma",
+    "age": 32,
+    "experienced: true
 }
 ```
 **[POST] Login for User**

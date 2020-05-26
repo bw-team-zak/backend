@@ -7,7 +7,7 @@ module.exports = {
     findById,
 }
 function find() {
-    return db('users').select('id',' username');
+    return db('users').select('id',' username','med_condition','age','experienced');
 }
 
 function findBy(filter) {
@@ -26,5 +26,5 @@ async function add(user) {
 }
 
 function findById(id) {
-    return db("users").where({ id }).first('id', 'username');
+    return db("users").where({ id }).first('id',' username','med_condition','age','experienced');
 }

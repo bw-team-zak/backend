@@ -17,6 +17,9 @@ exports.seed = function (knex) {
       {
         username: "dopey",
         password:  bcrypt.hashSync(userPassword, 14),
+        med_condition: "glaucoma",
+        age: 32,
+        experienced: true
       },
 
       {
