@@ -58,4 +58,14 @@ router.get('/',async (req, res, next) => {
   }
 })
 
+router.put('/:id', async (req, res, next) => {
+  try{
+    const { id } = req.params
+    const user = await Users.updateById(req.body,id)
+        res.status(201).json(user)
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router;

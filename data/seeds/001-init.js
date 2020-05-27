@@ -5,17 +5,17 @@ exports.seed = function (knex) {
   
     const users = [
       {
-        username: "sleepy",
+        username: "james",
         password:  bcrypt.hashSync(userPassword, 14),
       },
 
       {
-        username: "grumpy",
+        username: "rose",
         password:  bcrypt.hashSync(userPassword, 14),
       },
 
       {
-        username: "dopey",
+        username: "allen",
         password:  bcrypt.hashSync(userPassword, 14),
         med_condition: "glaucoma",
         age: 32,
@@ -23,21 +23,21 @@ exports.seed = function (knex) {
       },
 
       {
-        username: "doc",
+        username: "irving",
         password:  bcrypt.hashSync(userPassword, 14),
       },
       {
-        username: "happy",
+        username: "wade",
         password:  bcrypt.hashSync(userPassword, 14),
       },
 
       {
-        username: "basheful",
+        username: "anthony",
         password:  bcrypt.hashSync(userPassword, 14),
       },
       
       {
-        username: "sneezy",
+        username: "leonard",
         password:  bcrypt.hashSync(userPassword, 14),
       },
     ];
