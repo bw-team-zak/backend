@@ -2,7 +2,10 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('./users-model')
+const recommendedRouter = require('../recommended/recommended-router')
 const { isValid, authError } = require('./users-service')
+
+router.use('/:id/recommended',recommendedRouter)
 
 router.post('/register', isValid(), async (req, res, next) => {
   try {

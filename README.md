@@ -10,8 +10,9 @@ User registration and login
 |---|---|---|
 |POST Users Registration|/api/users/register|POST request to register new user|
 |POST Users Login|/api/users/login|POST request to login new user|
+|GET Users|/api/users|GET request to get all users|
 
-**[POST] Registration for User**
+**[POST] Registration for Users**
 
 URL: https://med-cabinet1.herokuapp.com/api/users/register
 
@@ -22,7 +23,7 @@ URL: https://med-cabinet1.herokuapp.com/api/users/register
 |password (required)|string|
 |med_condition|string|
 |age|integer|
-experienced|boolean|
+|experienced|boolean|
 
 An example of how the body should appear:
 ```
@@ -34,16 +35,17 @@ An example of how the body should appear:
     "experienced: true
 }
 ```
-You will recieve the user id and username.
+You will recieve the user id, username, med condition, age, and experience.
 ```
 {
+    "id": 3,
     "username": "dopey",
     "med_condition": "glaucoma",
     "age": 32,
     "experienced: true
 }
 ```
-**[POST] Login for User**
+**[POST] Login for Users**
 
 URL: https://med-cabinet1.herokuapp.com/api/users/login
 
@@ -70,4 +72,35 @@ You will recieve the user id, username and a JWT.
     "message" : "Welcome dopey!",
     "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTU5MDUxNzcwNn0.oApQinTQPd2YuihjsSwk9WnMna6CfI95kx6rxh0-Jg4"
 }
+```
+**[GET] Users**
+
+URL: https://med-cabinet1.herokuapp.com/api/users
+
+**What will be returned:**
+You will recieve an array of user objects.
+```
+[
+    {
+        "id": 1,
+        "username": "sleepy",
+        "med_condition": null,
+        "age": null,
+        "experienced": null
+    },
+    {
+        "id": 2,
+        "username": "grumpy",
+        "med_condition": null,
+        "age": null,
+        "experienced": null
+    },
+    {
+        "id": 3,
+        "username": "dopey",
+        "med_condition": "glaucoma",
+        "age": 32,
+        "experienced": true
+    }
+]
 ```
