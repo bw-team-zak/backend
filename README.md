@@ -63,7 +63,7 @@ URL: https://med-cabinet1.herokuapp.com/api/users/login
 An example of how the body should appear:
 ```
 {
-    "username": "dopey",
+    "username": "allen",
     "password": "1234"
 }
 ```
