@@ -22,7 +22,7 @@ URL: https://med-cabinet1.herokuapp.com/api/users/register
 |password (required)|string|
 |med_condition|string|
 |age|integer|
-experienced|boolean|
+|experienced|boolean|
 
 An example of how the body should appear:
 ```
@@ -34,9 +34,10 @@ An example of how the body should appear:
     "experienced: true
 }
 ```
-You will recieve the user id and username.
+You will recieve the user id, username, med condition, age, and experience.
 ```
 {
+    "id": 3,
     "username": "dopey",
     "med_condition": "glaucoma",
     "age": 32,
