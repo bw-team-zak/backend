@@ -2,20 +2,35 @@
 const pgConnection = process.env.DATABASE_URL
 module.exports = {
   
+  // development: {
+  //   client: 'sqlite3',
+  //   connection: { filename: './data/med-cabinet.db3' },
+  //   useNullAsDefault: true,
+  //   pool: {
+  //     afterCreate: (conn, done) => {
+  //       conn.run('PRAGMA foreign_keys = ON', done)
+  //     }
+  //   },
+  //   migrations: {
+  //     directory: './data/migrations',
+  //   },
+  //   seeds: { directory: './data/seeds' },
+  // },
+
   development: {
-    client: 'sqlite3',
-    connection: { filename: './data/med-cabinet.db3' },
-    useNullAsDefault: true,
+    client: 'pg',
+    connection: pgConnection,
     pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done)
-      }
+      min: 2,
+      max: 10
     },
     migrations: {
-      directory: './data/migrations',
+      directory: './data/migrations'
     },
-    seeds: { directory: './data/seeds' },
-  },
+    seeds: {
+      directory: './data/seeds'
+    }
+},
 
   staging: {
     client: 'pg',
@@ -31,7 +46,7 @@ module.exports = {
       directory: './data/seeds'
     }
 },
-
+  
   production: {
     client: 'pg',
     connection: pgConnection,

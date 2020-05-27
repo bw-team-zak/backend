@@ -2,12 +2,14 @@ const bdcrypt = require('bcryptjs')
 const db = require('../data/db-config')
 module.exports = { 
     add,
+    updateById,
     find,
     findBy,
     findById,
+    findFeedback
 }
 function find() {
-    return db('users').select('id',' username','med_condition','age','experienced');
+    return db('users').select('id',' username','med_condition','age','experienced','race','medical','positive','negative','flavors').orderBy('id');
 }
 
 function findBy(filter) {
@@ -25,6 +27,15 @@ async function add(user) {
         return findById(id); 
 }
 
+async function updateById(data,id) {
+   const [ids] = await db('users').where({id}).update(data,"id")
+    return findById(ids)
+}
+
 function findById(id) {
-    return db("users").where({ id }).first('id',' username','med_condition','age','experienced');
+    return db("users").where({ id }).first('id',' username','med_condition','age','experienced','medical','race','positive','negative');
+}
+
+function findFeedback(id) {
+    return db('users').where({ id }).first('id','username','medical','race','positive','negative')
 }
