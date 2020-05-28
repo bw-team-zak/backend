@@ -3,15 +3,19 @@ API Documentation
 BASE URL: https://med-cabinet1.herokuapp.com
 
 Attach endpoints to the end of the base URL in order to make HTTP Requests.
-Table of Contents
+**Table of Contents:**
 User registration and login
+User get and update
+Strain get and delete
 
 |Requests|Endpoints|Description|
 |---|---|---|
 |POST Users Registration|/api/users/register|POST request to register new user|
 |POST Users Login|/api/users/login|POST request to login new user|
 |GET Users|/api/users|GET request to get all users|
-|PUT Users|/api/users/:id| PUT request to update/add user info|
+|PUT Users|/api/users/:id|PUT request to update/add user info|
+|GET Strains|/api/strains|GET request to get all strains|
+|DELETE Strains|/api/strains/:id|DELETE request to delete a strain|
 
 **[POST] Registration for Users**
 
@@ -22,18 +26,18 @@ URL: https://med-cabinet1.herokuapp.com/api/users/register
 |---|---|
 |username (required)|string|
 |password (required)|string|
-|med_condition|string|
 |age|integer|
 |experienced|boolean|
+|location|string|
 
 An example of how the body should appear:
 ```
 {
     "username": "allen",
     "password": "1234",
-    "med_condition": "glaucoma",
     "age": 32,
-    "experienced: true
+    "experienced": true,
+    "location": "Boston"
 }
 ```
 You will recieve all of the user's information including info from the feedback form which should be null.
@@ -41,13 +45,12 @@ You will recieve all of the user's information including info from the feedback 
 {
     "id": 3,
     "username": "allen",
-    "med_condition": "glaucoma",
     "age": 32,
     "experienced: true,
-    "medical": "null",
+    "location": "Boston",
     "race": "null",
-    "positive": "null",
-    "negative": "null"
+    "symptoms": "null",
+    "flavor": "null"
 }
 ```
 **[POST] Login for Users**
@@ -89,36 +92,85 @@ You will recieve an array of user objects with all their info.
     {
         "id": 1,
         "username": "james",
-        "med_condition": null,
         "age": null,
-        "experienced": null
-        "medical": "null",
-        "race": "null",
-        "positive": "null",
-        "negative": "null"        
+        "experienced": null,
+        "location": null,
+        "race": null,
+        "symptoms": null,
+        "flavor": null
     },
     {
         "id": 2,
         "username": "rose",
-        "med_condition": null,
         "age": null,
-        "experienced": null
-        "medical": "null",
-        "race": "null",
-        "positive": "null",
-        "negative": "null"
+        "experienced": null,
+        "location": null,
+        "race": {
+            "race1": "false",
+            "race2": "false",
+            "race3": "false"
+        },
+        "symptoms": {
+            "pain": "false",
+            "other": "false",
+            "nausea": "false",
+            "stress": "false",
+            "fatigue": "false",
+            "seizure": "false",
+            "insomnia": "false",
+            "eyePressure": "false",
+            "muscleSpasm": "false",
+            "inflammation": "false",
+            "lackOfAppetite": "false"
+        },
+        "flavor": {
+            "pine": "false",
+            "minty": "false",
+            "nutty": "false",
+            "spicy": "false",
+            "sweet": "false",
+            "citrus": "false",
+            "earthy": "false",
+            "herbal": "false",
+            "pungent": "false"
+        }
     },
     {
         "id": 3,
         "username": "allen",
-        "med_condition": "glaucoma",
         "age": 32,
-        "experienced": true
-        "medical": "Insomnia",
-        "race": "hybrid",
-        "positive": "Euphoric",
-        "negative": "Paranoid"
-    }
+        "experienced": true,
+        "location": "Boston",
+        "race": {
+            "race1": false,
+            "race2": false,
+            "race3": false
+        },
+        "symptoms": {
+            "pain": false,
+            "other": false,
+            "nausea": false,
+            "stress": false,
+            "fatigue": false,
+            "seizure": false,
+            "insomnia": false,
+            "eyePressure": false,
+            "muscleSpasm": false,
+            "inflammation": false,
+            "lackOfAppetite": false
+        },
+        "flavor": {
+            "pine": false,
+            "minty": false,
+            "nutty": false,
+            "spicy": false,
+            "sweet": false,
+            "citrus": false,
+            "earthy": false,
+            "herbal": false,
+            "pungent": false
+        }
+    },
 ]
 ```
 
@@ -129,35 +181,195 @@ URL: https://med-cabinet1.herokuapp.com/api/users/:id
 **Request body should but doesn't have to include:**
 |Input|Input Type|
 |---|---|
-|race|string|
-|medical|string|
-|positive|string|
-|negative|string|
-|flavors|string|
+|race|object|
+|symptom|object|
+|flavor|object|
 
 An example of how the body should appear:
 ```
 {
-    "race": "hybrid",
-    "medical": "Insomnia",
-    "positive: "Euphoric",
-    "negative: "Paranoid"
+    "symptoms": {
+        "pain": "false",
+        "other": "false",
+        "nausea": "false",
+        "stress": "false",
+        "fatigue": "false",
+        "seizure": "false",
+        "insomnia": "false",
+        "eyePressure": "false",
+        "muscleSpasm": "false",
+        "inflammation": "false",
+        "lackOfAppetite": "false"
+    },
+    "race": {
+        "race1": "false",
+        "race2": "false",
+        "race3": "false"
+    },
+    "flavor": {
+        "pine": "false",
+        "minty": "false",
+        "nutty": "false",
+        "spicy": "false",
+        "sweet": "false",
+        "citrus": "false",
+        "earthy": "false",
+        "herbal": "false",
+        "pungent": "false"
+    }
 }
 ```
 
 **What will be returned:**
 You will recieve the user object that was updated with user's info.
 ```
+{
+    "id": 3,
+    "username": "allen",
+    "location": Boston,
+    "age": 32,
+    "experienced": true,
+    "symptoms": {
+        "pain": "false",
+        "other": "false",
+        "nausea": "false",
+        "stress": "false",
+        "fatigue": "false",
+        "seizure": "false",
+        "insomnia": "false",
+        "eyePressure": "false",
+        "muscleSpasm": "false",
+        "inflammation": "false",
+        "lackOfAppetite": "false"
+    },
+    "race": {
+        "race1": "false",
+        "race2": "false",
+        "race3": "false"
+    },
+    "flavor": {
+        "pine": "false",
+        "minty": "false",
+        "nutty": "false",
+        "spicy": "false",
+        "sweet": "false",
+        "citrus": "false",
+        "earthy": "false",
+        "herbal": "false",
+        "pungent": "false"
+    }
+}
+
+```
+
+**[GET] Get Info for ALL Strains**
+
+URL: https://med-cabinet1.herokuapp.com/api/strains
+
+**What will be returned:**
+You will recieve an array of strain objects with all their info.
+```
+[
+{
+        "id": 1,
+        "name": "Afpak",
+        "race": "hybrid",
+        "flavors": [
+            "Earthy",
+            "Chemical",
+            "Pine"
+        ],
+        "effects": {
+            "medical": [
+                "Depression",
+                "Insomnia",
+                "Pain",
+                "Stress",
+                "Lack of Appetite"
+            ],
+            "negative": [
+                "Dizzy"
+            ],
+            "positive": [
+                "Relaxed",
+                "Hungry",
+                "Happy",
+                "Sleepy"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "name": "African",
+        "race": "sativa",
+        "flavors": [
+            "Spicy/Herbal",
+            "Pungent",
+            "Earthy"
+        ],
+        "effects": {
+            "medical": [
+                "Depression",
+                "Pain",
+                "Stress",
+                "Lack of Appetite",
+                "Nausea",
+                "Headache"
+            ],
+            "negative": [
+                "Dry Mouth"
+            ],
+            "positive": [
+                "Euphoric",
+                "Happy",
+                "Creative",
+                "Energetic",
+                "Talkative"
+            ]
+        }
+    },
     {
         "id": 3,
-        "username":"allen",
-        "med_condition": "glaucoma",
-        "age": 32,
-        "experienced": true,
+        "name": "Afternoon Delight",
         "race": "hybrid",
-        "medical": "Insomnia",
-        "positive: "Euphoric",
-        "negative: "Paranoid"
-    }
+        "flavors": [
+            "Pepper",
+            "Flowery",
+            "Pine"
+        ],
+        "effects": {
+            "medical": [
+                "Depression",
+                "Insomnia",
+                "Pain",
+                "Stress",
+                "Cramps",
+                "Headache"
+            ],
+            "negative": [
+                "Dizzy",
+                "Dry Mouth",
+                "Paranoid"
+            ],
+            "positive": [
+                "Relaxed",
+                "Hungry",
+                "Euphoric",
+                "Uplifted",
+                "Tingly"
+            ]
+        }
+    },
+]
+```
 
+**[DELETE] Remove strain from database based on the strain's Id**
+
+URL: https://med-cabinet1.herokuapp.com/api/strains/:id
+**What will be returned:**
+You will recieve a message object that the strain was deleted.
+```
+{
+    "message": "Successfully deleted strain."
+}
 ```
