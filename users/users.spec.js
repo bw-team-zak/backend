@@ -30,13 +30,12 @@ describe("POST /api/users/login", () => {
     });
 });
 
-// describe("GET /api/users", () => {
-//     it("should return status code 200 and 20 jokes", async () => {
-//         const res = await supertest(server)
-//         .get('/api/jokes')
-//         .set('Authorization',token)
-//         expect(res.type).toBe('application/json')
-//         expect(res.statusCode).toBe(200)
-//         expect(res.body).toHaveLength(20)
-//     });
-// });
+describe("GET /api/users", () => {
+    it("should return status code 200 and users", async () => {
+        const res = await supertest(server)
+        .get('/api/users')
+        expect(res.type).toBe('application/json')
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toHaveLength(7)
+    });
+});

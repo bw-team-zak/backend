@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production' })
 const pgConnection = process.env.DATABASE_URL
 module.exports = {
   
