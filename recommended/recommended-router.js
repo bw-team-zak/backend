@@ -1,15 +1,19 @@
 const express = require('express')
 const Rec = require('./recommended-model')
+const Users = require('../users/users-model')
 
 const router = express.Router({
     mergeParams:true
 })
 
 router.get('/', async (req, res, next) => {
-    try {
-        const { id } = req.params
-        const rec = await Rec.findById(id)
-        res.json(rec)
+try {
+    const { id } = req.params
+    const user = await Users.findFeedback(id)
+    const rawRec = await axios
+        .post('', user)
+         
+        res.json(rawRec)
       } catch(err) {
         next(err)
       }
@@ -17,7 +21,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        const rec = await Rec.add(req.body)
+     const rec = await Rec.add(req.body)
             res.status(201).json(rec)
     } catch(err) {
         next(err)
