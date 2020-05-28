@@ -9,7 +9,7 @@ module.exports = {
     findFeedback
 }
 function find() {
-    return db('users').select('id',' username','med_condition','age','experienced','race','medical','positive','negative','flavors').orderBy('id');
+    return db('users').select('id',' username','age','experienced','location','race','symptoms','flavor').orderBy('id');
 }
 
 function findBy(filter) {
@@ -37,5 +37,5 @@ function findById(id) {
 }
 
 function findFeedback(id) {
-    return db('users').where({ id }).first('id','username','medical','race','positive','negative')
+    return db('users').where({ id }).first('id','username','symptoms','race','flavor')
 }
