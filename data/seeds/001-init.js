@@ -17,9 +17,38 @@ exports.seed = function (knex) {
       {
         username: "allen",
         password:  bcrypt.hashSync(userPassword, 14),
-        med_condition: "glaucoma",
+        location: "Boston",
         age: 32,
-        experienced: true
+        experienced: true,
+        symptoms:{
+          pain: false,
+          insomnia: false,
+          stress: false,
+          lackOfAppetite: false,
+          nausea: false,
+          fatigue: false,
+          muscleSpasm: false,
+          eyePressure: false,
+          inflammation: false,
+          seizure: false,
+          other: false,
+        },
+        race: {
+          race1: false,
+          race2: false,
+          race3: false,
+        },
+        flavor: {
+          earthy: false,
+          spicy:false,
+          herbal:false,
+          citrus: false,
+          sweet: false,
+          pine: false,
+          pungent: false,
+          nutty: false,
+          minty: false,
+        }
       },
 
       {
