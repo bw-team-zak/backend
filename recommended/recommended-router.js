@@ -11,8 +11,8 @@ try {
     const { id } = req.params
     const user = await Users.findFeedback(id)
     const rawRec = await axios
-        .post('', user)
-         
+        .get('http://strainapi.evanbusse.com/rGnBE2n/strains/search/effect/Insomnia')
+        
         res.json(rawRec)
       } catch(err) {
         next(err)

@@ -58547,5 +58547,5 @@ exports.seed = function (knex) {
               }
             }
     ]
-    return knex("strains").insert(strains);
+    return knex("strains").orderBy('name').insert(strains);
 }        
