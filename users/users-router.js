@@ -11,6 +11,7 @@ router.post('/register', isValid(), async (req, res, next) => {
   try {
     console.log(req.body)
     const user = await Users.add(req.body)
+    console.log(user)
     res.status(201).json(user)
   } catch(err) {
       next(err)
@@ -62,7 +63,7 @@ router.put('/:id', async (req, res, next) => {
   try{
     const { id } = req.params
     const user = await Users.updateById(req.body,id)
-        res.status(201).json(user)
+        res.status(200).json(user)
   } catch(err) {
     next(err)
   }

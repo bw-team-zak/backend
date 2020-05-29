@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon -r dotenv/config index.js",
     "start": "node index.js",
-    "test": "cross-env NODE_ENV=staging jest --watch",
+    "test": "cross-env NODE_ENV=staging jest --watch --runInBand",
     "knex-latest": "node -r dotenv/config node_modules/.bin/knex migrate:latest",
     "knex-rollback": "node -r dotenv/config node_modules/.bin/knex migrate:rollback",
     "knex-seed": "node -r dotenv/config node_modules/.bin/knex seed:run",

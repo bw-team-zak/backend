@@ -3,9 +3,13 @@ API Documentation
 BASE URL: https://med-cabinet1.herokuapp.com
 
 Attach endpoints to the end of the base URL in order to make HTTP Requests.
+
 **Table of Contents:**
-User registration and login
-User get and update
+
+User registration and login,
+
+User get and update,
+
 Strain get and delete
 
 |Requests|Endpoints|Description|
@@ -366,6 +370,7 @@ You will recieve an array of strain objects with all their info.
 **[DELETE] Remove strain from database based on the strain's Id**
 
 URL: https://med-cabinet1.herokuapp.com/api/strains/:id
+
 **What will be returned:**
 You will recieve a message object that the strain was deleted.
 ```
