@@ -1,9 +1,6 @@
 const db = require('../data/db-config')
 module.exports = { 
-    add,
-    updateById,
     find,
-    findBy,
     findById,
     remove
 }
@@ -13,21 +10,9 @@ function find() {
 }
 
 function remove(id) {
-    return db("strains").where('id',id).del()
+    return db("strains").where('id',id).del().first()
 }
 
-function add() {
-
-}
-
-function updateById() {
-
-}
-
-function findBy() {
-
-}
-
-function findById() {
-
+function findById(id) {
+    return db("stains").where('id',id).first('id')
 }
