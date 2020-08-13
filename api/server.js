@@ -7,6 +7,7 @@ const server = express();
 const { authenticate } = require('../users/users-service.js');
 const usersRouter = require('../users/users-router.js');
 const strainsRouter = require('../strains/strains-router')
+const dsRouter = require('../ds/ds-router')
 // const strainsRouter = require('../recommended/recommended-router');
 
 
@@ -15,6 +16,7 @@ server.use(express.json(),helmet(),cors(),morgan('short'));
 server.use('/api/users', usersRouter);
 // server.use('/api/strains', authenticate(), strainsRouter);
 server.use('/api/strains', strainsRouter)
+server.use('/api/ds', dsRouter)
 server.get('/', (req,res) => {
     res.json( { api: 'Welcome to the Med Cabinet API.' })
 })
