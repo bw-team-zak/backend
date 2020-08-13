@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
-const pgConnection = process.env.DATABASE_URL
+const pgConnection = process.env.DATABASE_URL || 'postgresql://postgres:pgpass@localhost/DSdatabase'
 module.exports = {
   
   // development: {

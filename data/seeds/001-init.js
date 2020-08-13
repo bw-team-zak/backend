@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const userPassword = process.env.USER_PASSWORD 
+const userPassword = process.env.USER_PASSWORD || 'password1234'
 exports.seed = function (knex) {
     // 000-cleanup.js alread cleaned out all tables
   
