@@ -1,8 +1,8 @@
 const db = require('../data/db-config')
 
 
-function getData() {
-  return db("ds_data").select('data','layout');
+function getData(user_ID) {
+  return db("ds_data").where({user_ID}).select('data');
 }
 
 function add(data) {

@@ -1,12 +1,10 @@
 const router = require('express').Router();
 Dsmodel = require('./ds-model')
 
-router.get('/viz/:state', async (req, res,next) => {
+router.post('/spending', async (req, res,next) => {
     try{
-        const stateStr = String(req.params.state);
-        const stateObj = {state: stateStr}
-        await Dsmodel.add(stateObj)
-        const data = await Dsmodel.getData()
+        const user_ID = req.body.user_ID
+        const data = await Dsmodel.getData(user_ID)
         res.status(200).json(data)
       } catch(err) {
           next(err)
