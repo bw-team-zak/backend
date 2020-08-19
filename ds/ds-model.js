@@ -2,7 +2,7 @@ const db = require('../data/db-config')
 
 
 function getData(user_ID) {
-  return db("ds_data").where({user_ID}).select('data');
+  return db("ds_data").where({user_ID}).select('graph_data');
 }
 
 function add(data) {
